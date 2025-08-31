@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES6", // Biên dịch sang cú pháp ES6
+    "module": "commonjs", // Module sử dụng CommonJS (phù hợp với Node.js)
+    "rootDir": "src", // Thư mục chứa mã nguồn TypeScript
+    "baseUrl": "./", // Đường dẫn gốc để dùng alias (nếu cần)
+    "outDir": "dist", // Thư mục xuất ra sau khi biên dịch
+    "removeComments": true, // Xóa comment trong mã biên dịch
+    "esModuleInterop": true, // Hỗ trợ import mặc định từ module CommonJS
+    "forceConsistentCasingInFileNames": true, // Bắt buộc đồng nhất kiểu chữ trong tên file
+    "strict": true, // Bật tất cả các kiểm tra nghiêm ngặt
+    "skipLibCheck": true, // Bỏ qua kiểm tra type trong các file *.d.ts của thư viện
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "typeRoots": ["./src/@types"] // Thư mục chứa các định nghĩa type tùy chỉnh
+  },
+  "include": ["src/**/*"], // Chỉ định các file sẽ biên dịch
+  "exclude": ["node_modules"] // Loại trừ thư mục node_modules
+}
