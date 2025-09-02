@@ -6,6 +6,7 @@ import helmet from 'helmet';
 import compression from 'compression';
 import v1Router from '@/routes/v1';
 import logger from '@/lib/winston';
+import { connectDB, disconnectDB } from '@/lib/mongoose';
 
 const app = express();
 
@@ -34,8 +35,15 @@ app.use(
 );
 app.use(helmet());
 
-app.use('/api/v1', v1Router);
+(async () => {
+  try {
+    await connectDB();
+    app.use('/api/v1', v1Router);
 
-app.listen(config.PORT, () => {
-  logger.info(`Server running: http://localhost:${config.PORT}`);
-});
+    app.listen(config.PORT, () => {
+      logger.info(`Server running: http://localhost:${config.PORT}`);
+    });
+  } catch (error) {
+    logger.error('Error starting server', error);
+  }
+})();
