@@ -7,6 +7,7 @@ import compression from 'compression';
 import v1Router from '@/routes/v1';
 import logger from '@/lib/winston';
 import { connectDB, disconnectDB } from '@/lib/mongoose';
+import { apiLimiter } from './lib/express.rate_limit';
 
 const app = express();
 
@@ -20,7 +21,7 @@ const corsOptions: CorsOptions = {
     }
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 };
 

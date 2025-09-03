@@ -2,8 +2,9 @@ import { createLogger, format, transports } from 'winston';
 const { combine, timestamp, colorize, printf, align, label } = format;
 import config from '@/config';
 
-const myFormat = printf(({ level, message, label, timestamp }) => {
-  return `${timestamp} [${label}] ${level}: ${message}`;
+const myFormat = printf(({ level, message, label, timestamp, ...rest }) => {
+  const meta = Object.keys(rest).length ? ' ' + JSON.stringify(rest) : ' ';
+  return `${timestamp} [${label}] ${level}: ${message}${meta}`;
 });
 
 const logger = createLogger({

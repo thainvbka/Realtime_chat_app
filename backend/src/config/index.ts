@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-
+import type ms from 'ms';
 dotenv.config();
 
 const config = {
@@ -7,6 +7,10 @@ const config = {
   LOG_LEVEL: process.env.LOG_LEVEL,
   MONGO_URI: process.env.MONGO_URI,
   DB_NAME: process.env.DB_NAME,
+  JWT_ACCESS_SECRET: process.env.JWT_ACCESS_SECRET!,
+  ACCESS_TOKEN_EXPIRY: process.env.ACCESS_TOKEN_EXPIRY as ms.StringValue,
+  JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET!,
+  REFRESH_TOKEN_EXPIRY: process.env.REFRESH_TOKEN_EXPIRY as ms.StringValue,
 };
 
 export default config;
