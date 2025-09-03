@@ -1,6 +1,6 @@
 import User, { IUser } from '@/models/user';
-import { generateAccessToken, generateRefreshToken } from '@/lib/jwt';
-import logger from '@/lib/winston';
+import { generateAccessToken, generateRefreshToken } from '@/libs/jwt';
+import logger from '@/libs/winston';
 import type { Request, Response } from 'express';
 
 type UserData = Pick<IUser, 'username' | 'email' | 'password' | 'profilePic'>;

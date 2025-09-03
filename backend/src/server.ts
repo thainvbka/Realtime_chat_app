@@ -5,9 +5,9 @@ import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import compression from 'compression';
 import v1Router from '@/routes/v1';
-import logger from '@/lib/winston';
-import { connectDB, disconnectDB } from '@/lib/mongoose';
-import { apiLimiter } from './lib/express.rate_limit';
+import logger from '@/libs/winston';
+import { connectDB, disconnectDB } from '@/libs/mongoose';
+import { apiLimiter } from './libs/express.rate_limit';
 
 const app = express();
 

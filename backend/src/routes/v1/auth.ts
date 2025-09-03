@@ -1,5 +1,5 @@
 import register from '@/controllers/v1/auth/register';
-import { authLimiter } from '@/lib/express.rate_limit';
+import { authLimiter } from '@/libs/express.rate_limit';
 import validationError from '@/middlewares/validationError';
 import { registerValidator } from '@/validators/auth.validator';
 import { Router } from 'express';

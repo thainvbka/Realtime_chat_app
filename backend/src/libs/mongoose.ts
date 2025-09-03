@@ -1,5 +1,5 @@
 import mongoose, { ConnectOptions } from 'mongoose';
-import logger from '@/lib/winston';
+import logger from '@/libs/winston';
 import config from '@/config';
 
 const clientOptions: ConnectOptions = {
