@@ -13,7 +13,7 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "typeRoots": ["./src/@types"] // Thư mục chứa các định nghĩa type tùy chỉnh
+    "typeRoots": ["./node_modules/@types", "./src/@types"] // Thư mục chứa các định nghĩa type
   },
   "include": ["src/**/*"], // Chỉ định các file sẽ biên dịch
   "exclude": ["node_modules"] // Loại trừ thư mục node_modules
