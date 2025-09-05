@@ -18,6 +18,7 @@ const authenticate = (req: Request, res: Response, next: NextFunction) => {
   try {
     const jwtPayload = verifyAccessToken(token) as { userId: Types.ObjectId };
     req.userId = jwtPayload.userId;
+    return next();
   } catch (error) {
     if (error instanceof TokenExpiredError) {
       res.status(401).json({

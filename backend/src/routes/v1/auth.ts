@@ -5,6 +5,7 @@ import validationError from '@/middlewares/validationError';
 import { registerValidator } from '@/validators/auth.validator';
 import { loginValidator } from '@/validators/auth.validator';
 import login from '@/controllers/v1/auth/login';
+import logout from '@/controllers/v1/auth/logout';
 
 import { Router } from 'express';
 
@@ -19,5 +20,6 @@ router.post(
 );
 
 router.post('/login', authLimiter, ...loginValidator, validationError, login);
+router.post('/logout', authLimiter, authenticate, logout);
 
 export default router;
