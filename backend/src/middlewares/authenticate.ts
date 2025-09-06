@@ -25,6 +25,7 @@ const authenticate = (req: Request, res: Response, next: NextFunction) => {
         code: 'AuthenticationError',
         message: 'Access token expired, request a new one with refresh token',
       });
+      return;
     }
     if (error instanceof JsonWebTokenError) {
       res.status(401).json({

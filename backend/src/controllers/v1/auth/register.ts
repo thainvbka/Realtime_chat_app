@@ -3,16 +3,16 @@ import { generateAccessToken, generateRefreshToken } from '@/libs/jwt';
 import logger from '@/libs/winston';
 import type { Request, Response } from 'express';
 
-type UserData = Pick<IUser, 'username' | 'email' | 'password' | 'profilePic'>;
+type UserData = Pick<IUser, 'username' | 'email' | 'password'>;
 
 const register = async (req: Request, res: Response): Promise<void> => {
-  const { username, email, password, profilePic }: UserData = req.body;
+  const { username, email, password }: UserData = req.body;
+
   try {
     const newUser = await User.create({
       username,
       email,
       password,
-      profilePic,
     });
 
     const accessToken = generateAccessToken(newUser._id);

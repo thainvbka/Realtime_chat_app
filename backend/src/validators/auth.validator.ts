@@ -39,7 +39,6 @@ export const registerValidator = [
     .withMessage('Password must not contain whitespace')
     .isLength({ min: 8 })
     .withMessage('Password must be at least 8 characters'),
-  body('profilePic').optional(),
 ];
 
 export const loginValidator = [
@@ -52,8 +51,8 @@ export const loginValidator = [
     .isEmail()
     .withMessage('Invalid is email')
     .custom(async (value) => {
-      const existsEmail = await User.exists({ email: value });
-      if (!existsEmail) {
+      const user = await User.findOne({ email: value });
+      if (!user) {
         throw new Error('Invalid email address');
       }
     }),
