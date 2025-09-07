@@ -8,7 +8,7 @@ export interface IChat {
 }
 const chatSchema = new Schema(
   {
-    particials: [
+    participants: [
       {
         type: Schema.Types.ObjectId,
         ref: 'User',
@@ -21,6 +21,7 @@ const chatSchema = new Schema(
     },
     chatName: {
       type: String,
+      maxLength: [20, 'Chat name must be less than 20 characters'],
       default: '',
     },
     groupAvatar: {

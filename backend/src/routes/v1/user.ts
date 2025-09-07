@@ -7,12 +7,23 @@ import contact from '@/controllers/v1/user/get_contact';
 import getUser from '@/controllers/v1/user/get_user';
 import updateProfilePic from '@/controllers/v1/user/update_profilePic';
 import validationError from '@/middlewares/validationError';
-import { userProfileUpdateValidator } from '@/validators/user.validator';
+import {
+  userProfileUpdateValidator,
+  getUserValidator,
+  searchUserValidator,
+} from '@/validators/user.validator';
 
 const router = Router();
 
 router.get('/me', apiLimiter, authenticate, getInfo);
-router.get('/search', apiLimiter, authenticate, searchUser);
+router.get(
+  '/search',
+  apiLimiter,
+  authenticate,
+  searchUserValidator,
+  validationError,
+  searchUser,
+);
 router.get('/contact', apiLimiter, authenticate, contact);
 router.put(
   '/update',
@@ -22,5 +33,12 @@ router.put(
   authenticate,
   updateProfilePic,
 );
-router.get('/:id', apiLimiter, authenticate, getUser);
+router.get(
+  '/:id',
+  apiLimiter,
+  authenticate,
+  getUserValidator,
+  validationError,
+  getUser,
+);
 export default router;
