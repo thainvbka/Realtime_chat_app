@@ -6,6 +6,7 @@ import validationError from '@/middlewares/validationError';
 import { createChatValidator } from '@/validators/chat.validator';
 import { updateGroupAvatarValidator } from '@/validators/chat.validator';
 import updateGroupAvatar from '@/controllers/v1/chat/update_groupAvatar';
+import getChat from '@/controllers/v1/chat/getChat';
 
 const router = Router();
 
@@ -26,5 +27,7 @@ router.put(
   validationError,
   updateGroupAvatar,
 );
+
+router.get('/', apiLimiter, authenticate, getChat);
 
 export default router;
