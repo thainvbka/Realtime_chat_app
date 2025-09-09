@@ -7,7 +7,8 @@ import compression from 'compression';
 import v1Router from '@/routes/v1';
 import logger from '@/libs/winston';
 import { connectDB, disconnectDB } from '@/libs/mongoose';
-import { apiLimiter } from './libs/express.rate_limit';
+import { setupSocket } from '@/libs/socket';
+import http from 'http';
 
 const app = express();
 
@@ -41,7 +42,10 @@ app.use(helmet());
     await connectDB();
     app.use('/api/v1', v1Router);
 
-    app.listen(config.PORT, () => {
+    const server = http.createServer(app);
+    setupSocket(server);
+
+    server.listen(config.PORT, () => {
       logger.info(`Server running: http://localhost:${config.PORT}`);
     });
   } catch (error) {

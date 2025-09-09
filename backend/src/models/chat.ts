@@ -1,10 +1,10 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, Types } from 'mongoose';
 export interface IChat {
-  participants: Schema.Types.ObjectId[];
+  participants: Types.ObjectId[];
   isGroup: boolean;
   chatName?: string;
   groupAvatar?: string;
-  lastMessage?: Schema.Types.ObjectId;
+  lastMessage?: Types.ObjectId;
 }
 const chatSchema = new Schema(
   {

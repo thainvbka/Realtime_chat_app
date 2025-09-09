@@ -1,8 +1,8 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, Types } from 'mongoose';
 
 export interface IMessage {
-  chatId: Schema.Types.ObjectId;
-  senderId: Schema.Types.ObjectId;
+  chatId: Types.ObjectId;
+  senderId: Types.ObjectId;
   text?: string;
   image?: string;
   isRead: boolean;
