@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 export interface IChat {
-  particials: Schema.Types.ObjectId[];
+  participants: Schema.Types.ObjectId[];
   isGroup: boolean;
   chatName?: string;
   groupAvatar?: string;

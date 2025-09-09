@@ -9,7 +9,7 @@ export const getUserValidator = [
 ];
 
 export const searchUserValidator = [
-  body('query')
+  query('search')
     .trim()
     .notEmpty()
     .withMessage('Search query must not be empty')
