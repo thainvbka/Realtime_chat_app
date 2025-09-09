@@ -2,6 +2,18 @@
 
 Backend Node.js/TypeScript cho ứng dụng chat thời gian thực.
 
+## Công nghệ sử dụng
+
+- Node.js 18+ và TypeScript
+- Express 5
+- MongoDB + Mongoose 8
+- JWT (access/refresh)
+- Express-rate-limit
+- Bảo mật: helmet, cors, cookie-parser
+- Cloudinary
+- Socket.IO 4
+- Logging: winston
+
 ## Bắt đầu
 
 1. Cài đặt phụ thuộc
