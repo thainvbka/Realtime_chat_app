@@ -3,6 +3,7 @@ import Message, { IMessage } from '@/models/message';
 import { v2 as cloudinary } from 'cloudinary';
 import logger from '@/libs/winston';
 import type { Request, Response } from 'express';
+import { getIO } from '@/libs/socket';
 
 type messageData = Pick<IMessage, 'chatId' | 'text' | 'image'>;
 const sendMessage = async (req: Request, res: Response) => {
@@ -44,6 +45,9 @@ const sendMessage = async (req: Request, res: Response) => {
       'senderId',
       'username profilePic',
     );
+    // Emit đến room chatId
+    if (fullMessage)
+      getIO().to(chatId.toString()).emit('message:new', fullMessage);
 
     res.status(201).json({
       code: 'Success',
